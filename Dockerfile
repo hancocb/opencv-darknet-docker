@@ -4,8 +4,7 @@ FROM ubuntu:16.04
 # Install OpenCV requirements
 RUN \
   sed -i "s/# \(.*multiverse$\)/\1/g" /etc/apt/sources.list && \
-  apt-get update && \
-  apt-get -y upgrade && \
+  apt-get update && apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev && \
   apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
@@ -34,10 +33,10 @@ RUN \
   ldconfig
 
 # Set environment variables
-ENV HOME /darknet
+ENV HOME /darknet/darknet
 
 # Define working directory
-WORKDIR /darknet
+WORKDIR /darknet/darknet
 
 # Define default command
-CMD ["bash"]
+CMD ["/bin/bash"]
