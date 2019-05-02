@@ -1,13 +1,6 @@
 # Base image
 FROM ubuntu:16.04
 
-RUN \
-  export uid=1000 gid=1000 && \
-  echo "opencv:x:${uid}:${gid}:OpenCV,,,:/bin/bash" >> /etc/passwd && \
-  echo "opencv:x:${uid}:" >> /etc/group && \
-  echo "opencv ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/opencv && \
-  chmod 0440 /etc/sudoers.d/opencv
-
 # Install OpenCV requirements
 RUN \
   sed -i "s/# \(.*multiverse$\)/\1/g" /etc/apt/sources.list && \
@@ -39,9 +32,6 @@ RUN \
   git clone https://github.com/pjreddie/darknet.git && cd ./darknet && \
   sed -i 's/OPENCV=0/OPENCV=1/g' ./Makefile && make && \
   ldconfig
-
-# Create user
-USER opencv
 
 # Set environment variables
 ENV HOME /darknet
