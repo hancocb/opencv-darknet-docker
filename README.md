@@ -14,9 +14,9 @@ If you see the following error,
 No protocol specified
 Error: Can't open display <em>X</em>:<em>X</em>
 </pre>
-run ```xhost local:docker``` before running the container. If
+run `xhost local:docker` before running the container. If
 you are not using the docker group and running docker as sudo,
-you will need to change ```local:docker``` to ```local:root```.
+you will need to change `local:docker` to `local:root`.
 <h2>Using the container</h2>
 Example:
 <pre>
